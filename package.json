@@ -1,7 +1,7 @@
 {
-  "name": "typescript-npm-package-template",
-  "version": "0.0.0-development",
-  "description": "A template for creating npm packages using TypeScript and VSCode",
+  "name": "curp",
+  "version": "0.0.1-development",
+  "description": "Verify CURP and obtain personal information from the Mexican government CURP.",
   "main": "./lib/src/index.js",
   "files": [
     "lib/**/*"
@@ -20,32 +20,26 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ryansonshine/typescript-npm-package-template.git"
+    "url": "git+https://github.com/sanchezcarlosjr/curp.git"
   },
   "license": "MIT",
   "author": {
-    "name": "Ryan Sonshine",
-    "email": "ryansonshine@users.noreply.github.com",
-    "url": "https://github.com/ryansonshine"
+    "name": "Carlos Eduardo Sanchez Torres (sanchezcarlosjr)",
+    "email": "hello@sanchezcarlosjr.com",
+    "url": "https://sanchezcarlosjr.com/"
   },
   "engines": {
     "node": ">=12.0"
   },
   "keywords": [
-    "boilerplate",
-    "template",
-    "typescript",
-    "vscode",
-    "jest",
-    "husky",
-    "commitizen",
-    "semantic-release",
-    "codecov"
+    "curp",
+    "mexico",
+    "government"
   ],
   "bugs": {
-    "url": "https://github.com/ryansonshine/typescript-npm-package-template/issues"
+    "url": "https://github.com/sanchezcarlosjr/curp/issues"
   },
-  "homepage": "https://github.com/ryansonshine/typescript-npm-package-template#readme",
+  "homepage": "https://sanchezcarlosjr.com/kyc-arsus/J2pocdBu0SUdQ4bw8Rwq",
   "dependencies": {},
   "devDependencies": {
     "@types/jest": "^26.0.24",
