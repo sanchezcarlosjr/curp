@@ -117,3 +117,8 @@ dist
 
 # Compiled code
 lib/
+
+
+# Env
+test/test-data.json
+service-account-credentials.json
