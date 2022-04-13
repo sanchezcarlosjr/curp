@@ -1,6 +1,6 @@
 {
   "name": "curp",
-  "version": "0.0.1-development",
+  "version": "0.1.0-beta",
   "description": "Verify CURP and obtain personal information from the Mexican government CURP.",
   "main": "./lib/src/index.js",
   "files": [

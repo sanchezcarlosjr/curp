@@ -5,7 +5,7 @@ class CURP {
   void verify()
 }
 abstract        Provider {
-  CURP provide()
+  Mexican provideBy(curp)
 } 
 Provider  <|-- Cache
 Provider <|-- Government

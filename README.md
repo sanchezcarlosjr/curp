@@ -4,7 +4,33 @@
 
 Inspired by [node-module-boilerplate](https://github.com/sindresorhus/node-module-boilerplate)
 
-## Features
+# How to Start Using CURP package?
+```puml
+@startuml
+class Client
+class MexicanFinder {
+   find(curp)
+}
+Client --> MexicanFinder
+MexicanFinder --> "1..*" Provider
+@enduml
+```
+
+```typescript
+import { GovernmentScrapper, Firestore, CaptchaSolver } from "providers";
+import { Mexican } from "models";
+import { CaptchaSolver } from "shared";
+
+const mexicanFinder = MexicanFinder(
+  // If you want to use another database inherits provider.
+  new Firestore(),
+  // 2Captcha ApiKey https://2captcha.com/enterpage
+  new GovernmentScrapper(new CaptchaSolver("apiKey"))
+);
+const mexican: Mexican = await mexicanFinder.find(new Curp('CURP'));
+```
+
+# Features
 
 - [Semantic Release](https://github.com/semantic-release/semantic-release)
 - [Issue Templates](https://github.com/johnsmith/my-cool-package/tree/main/.github/ISSUE_TEMPLATE)
