@@ -1,15 +1,14 @@
-// @ts-ignore
-import fetch from 'node-fetch';
 import { Provider } from '../models';
 import { Curp } from '../models';
 import { CaptchaSolver } from '../shared';
+import axios from 'axios';
 
 const genderISOConverter = new Map([
   ['HOMBRE', '1'],
   ['MUJER', '2'],
 ]);
 const birthdayFormatFromRenapo = /^(\d{1,2})\/(\d{1,2})\/(\d{4})$/g;
-const birthday = '$3-$2-$1T00:00:00.000Z';
+const birthday = '$3-$2-$1T12:00:00.000Z';
 
 export class GovernmentScrapper extends Provider {
   constructor(private captchaSolver: CaptchaSolver) {
@@ -62,7 +61,7 @@ export class GovernmentScrapper extends Provider {
       'https://www.gob.mx/curp'
     );
     // eslint-disable-next-line @typescript-eslint/no-unsafe-call,@typescript-eslint/no-unsafe-member-access
-    const renapoResponse: any = await fetch(
+    const renapoResponse: any = await axios(
       'https://www.gob.mx/v1/renapoCURP/consulta',
       {
         headers: {
@@ -82,7 +81,7 @@ export class GovernmentScrapper extends Provider {
           'Cache-Control': 'no-cache',
           referer: 'https://www.gob.mx/',
         },
-        body: JSON.stringify({
+        data: JSON.stringify({
           curp: curpId.value,
           tipoBusqueda: 'curp',
           ip: '127.0.0.1',
@@ -91,7 +90,7 @@ export class GovernmentScrapper extends Provider {
         method: 'POST',
       }
       // eslint-disable-next-line @typescript-eslint/no-unsafe-call,@typescript-eslint/no-unsafe-member-access,@typescript-eslint/no-unsafe-return
-    ).then((res: { json: () => any }) => res.json());
+    ).then(res => res.data);
     // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
     this.ensure(renapoResponse.codigo);
     // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access

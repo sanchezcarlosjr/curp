@@ -1,6 +1,5 @@
 import { Curp, Mexican, Provider } from '../models';
-// @ts-ignore
-import fetch from 'node-fetch';
+import axios from 'axios';
 
 export class Arsus extends Provider {
   private readonly URL: string =
@@ -10,9 +9,9 @@ export class Arsus extends Provider {
   }
   async provide(curp: Curp): Promise<Mexican | { error: string } | null> {
     // eslint-disable-next-line @typescript-eslint/restrict-template-expressions,@typescript-eslint/no-unsafe-return,@typescript-eslint/no-unsafe-call,@typescript-eslint/no-unsafe-member-access
-    return await fetch(`${this.URL}?curp=${curp}&apiKey=${this.apiKey}`).then(
+    return await axios(`${this.URL}?curp=${curp}&apiKey=${this.apiKey}`).then(
       // eslint-disable-next-line @typescript-eslint/no-unsafe-return
-      (response: { json: () => any }) => response.json()
+      response => response.data
     );
   }
 }

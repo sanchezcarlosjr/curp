@@ -22,35 +22,23 @@ Provider <|-down- Arsus
 @enduml
 ```
 
+## Getting started
 ```typescript
-import { GovernmentScrapper, Firestore, CaptchaSolver, Arsus } from "providers";
+import { GovernmentScrapper, CaptchaSolver, Arsus } from "providers";
 import { Mexican } from "models";
 import { CaptchaSolver } from "shared";
 
-const mexicanFinder = MexicanFinder(
-  // If you want to use another database inherits provider.
+const mexicanFinder = new MexicanFinder(
+  // Your own database.
   new Firestore(),
-  // Your providers: Arsus, Conectame2, ...
+  // Other providers: Arsus, Conectame2, ...
   new Arsus("apiKey"),
   // 2Captcha ApiKey https://2captcha.com/enterpage
   new GovernmentScrapper(new CaptchaSolver("apiKey"))
 );
 const mexican: Mexican = await mexicanFinder.find(new Curp('CURP'));
+if (mexicanFinder.finalState() != 'Firestore') {
+  // Save mexican
+  new Firestore().save(mexican);
+}
 ```
-
-# Features
-
-- [Semantic Release](https://github.com/semantic-release/semantic-release)
-- [Issue Templates](https://github.com/johnsmith/my-cool-package/tree/main/.github/ISSUE_TEMPLATE)
-- [GitHub Actions](https://github.com/johnsmith/my-cool-package/tree/main/.github/workflows)
-- [Codecov](https://about.codecov.io/)
-- [VSCode Launch Configurations](https://github.com/johnsmith/my-cool-package/blob/main/.vscode/launch.json)
-- [TypeScript](https://www.typescriptlang.org/)
-- [Husky](https://github.com/typicode/husky)
-- [Lint Staged](https://github.com/okonet/lint-staged)
-- [Commitizen](https://github.com/search?q=commitizen)
-- [Jest](https://jestjs.io/)
-- [ESLint](https://eslint.org/)
-- [Prettier](https://prettier.io/)
-
-## Getting started

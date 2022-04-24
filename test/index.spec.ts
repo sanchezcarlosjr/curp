@@ -1,10 +1,7 @@
-import * as firebase from 'firebase-admin';
 const data = require('./test-data.json');
 import { Curp, GovernmentScrapper } from '../src';
 import { CaptchaSolver } from '../src/shared';
-import { Arsus } from '../src/providers/Arsus';
-
-firebase.initializeApp();
+import { Arsus } from '../src';
 
 describe('index', () => {
   describe('arsus api', () => {
