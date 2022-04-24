@@ -1,5 +1,6 @@
-import { Curp } from '../models/Curp';
-import { Provider } from '../models/Provider';
+import { Curp } from '../models';
+import { Provider } from '../models';
+import { Mexican } from '../models';
 
 export class MexicanFinder {
   private readonly providers: Provider[];
@@ -14,7 +15,7 @@ export class MexicanFinder {
     return this.state;
   }
 
-  async findByCurp(id: Curp) {
+  async findByCurp(id: Curp): Promise<Mexican | { error: string }> {
     for (const provider of this.providers) {
       const mexican = await provider.provide(id);
       this.state = provider.constructor.name;

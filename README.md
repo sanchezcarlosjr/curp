@@ -9,21 +9,29 @@ Inspired by [node-module-boilerplate](https://github.com/sindresorhus/node-modul
 @startuml
 class Client
 class MexicanFinder {
-   find(curp)
+   find(curp): Mexican
 }
 Client --> MexicanFinder
-MexicanFinder --> "1..*" Provider
+class Provider {
+provide(curp): Mexican
+}
+MexicanFinder -right-> "1..*" Provider
+Provider <|-down- Firestore
+Provider <|-down- GovernmentScrapper
+Provider <|-down- Arsus
 @enduml
 ```
 
 ```typescript
-import { GovernmentScrapper, Firestore, CaptchaSolver } from "providers";
+import { GovernmentScrapper, Firestore, CaptchaSolver, Arsus } from "providers";
 import { Mexican } from "models";
 import { CaptchaSolver } from "shared";
 
 const mexicanFinder = MexicanFinder(
   // If you want to use another database inherits provider.
   new Firestore(),
+  // Your providers: Arsus, Conectame2, ...
+  new Arsus("apiKey"),
   // 2Captcha ApiKey https://2captcha.com/enterpage
   new GovernmentScrapper(new CaptchaSolver("apiKey"))
 );

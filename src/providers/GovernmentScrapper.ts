@@ -1,8 +1,8 @@
 // @ts-ignore
 import fetch from 'node-fetch';
-import { CaptchaSolver } from './CaptchaSolver';
 import { Provider } from '../models';
 import { Curp } from '../models';
+import { CaptchaSolver } from '../shared';
 
 const genderISOConverter = new Map([
   ['HOMBRE', '1'],
@@ -54,6 +54,7 @@ export class GovernmentScrapper extends Provider {
   }
 
   // @ts-ignore
+  // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
   async provide(curpId: Curp) {
     // eslint-disable-next-line @typescript-eslint/no-unsafe-call,@typescript-eslint/no-unsafe-member-access
     const captchaSolution = await this.captchaSolver.solve(

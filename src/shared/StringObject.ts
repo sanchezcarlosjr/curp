@@ -7,11 +7,15 @@ export class StringObject {
 
   _value = '';
 
-  get value() {
+  get value(): string {
     return this._value;
   }
 
   set value(value: string) {
     this._value = value;
+  }
+
+  toString(): string {
+    return this.value;
   }
 }

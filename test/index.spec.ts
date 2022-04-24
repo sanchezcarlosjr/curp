@@ -1,14 +1,29 @@
 import * as firebase from 'firebase-admin';
-const data = require('test-data.json');
-import { CaptchaSolver, Curp, GovernmentScrapper } from '../src';
+const data = require('./test-data.json');
+import { Curp, GovernmentScrapper } from '../src';
+import { CaptchaSolver } from '../src/shared';
+import { Arsus } from '../src/providers/Arsus';
 
 firebase.initializeApp();
 
 describe('index', () => {
+  describe('arsus api', () => {
+    it('should return mexican when it calls Arsus API', async () => {
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+      const arsus = new Arsus(data['arsus_api_key']);
+      const mexican = await arsus.provide(
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+        new Curp(data['mexicans'][0]['curp'])
+      );
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+      expect(mexican).toEqual(data['mexicans'][0]);
+    });
+  });
   describe('government scrapper', () => {
     it.skip('should return mexican when it exists in database', async () => {
       const governmentScrapper = new GovernmentScrapper(
-        new CaptchaSolver('584e131dc55c1e6ef06ca7afe4f2fa0d')
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+        new CaptchaSolver(data['2captcha_api_key'])
       );
       const mexican = await governmentScrapper.provide(
         // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
