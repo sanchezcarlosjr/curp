@@ -41,7 +41,7 @@ const mexicanFinder = new MexicanFinder(
   new GovernmentScrapper(new CaptchaSolver("apiKey"))
 );
 const mexican: Mexican = await mexicanFinder.find(new Curp('CURP'));
-if (mexicanFinder.finalState() != 'Firestore') {
+if (mexicanFinder.finalState() !== 'Firestore') {
   // Save mexican
   new Firestore().save(mexican);
 }
