@@ -3,6 +3,10 @@
 >  Verify CURP and obtain personal information from the Mexican government CURP.
 
 Inspired by [node-module-boilerplate](https://github.com/sindresorhus/node-module-boilerplate)
+# Installing
+```
+npm i get-mexican-data-by-curp
+```
 
 # How to Start Using CURP package?
 ```puml
