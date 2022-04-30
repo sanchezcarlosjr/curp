@@ -1,7 +1,5 @@
 const data = require('./test-data.json');
-import { Curp, GovernmentScrapper } from '../src';
-import { CaptchaSolver } from '../src/shared';
-import { Arsus } from '../src';
+import { Curp, GovernmentScrapper, CaptchaSolver, Arsus } from '../src';
 
 describe('index', () => {
   describe('arsus api', () => {

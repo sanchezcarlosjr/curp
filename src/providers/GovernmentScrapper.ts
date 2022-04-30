@@ -1,7 +1,7 @@
-import { Provider } from '../models';
+import { Mexican, Provider } from '../models';
 import { Curp } from '../models';
-import { CaptchaSolver } from '../shared';
 import axios from 'axios';
+import { CaptchaSolver } from './CaptchaSolver';
 
 const genderISOConverter = new Map([
   ['HOMBRE', '1'],
@@ -29,7 +29,7 @@ export class GovernmentScrapper extends Provider {
       // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
       name: register.nombres,
       // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-      gender: genderISOConverter.get(register.sexo),
+      gender: genderISOConverter.get(register.sexo) ?? '',
       // eslint-disable-next-line @typescript-eslint/no-unsafe-call,@typescript-eslint/no-unsafe-member-access
       birthday: register.fechaNacimiento.replace(
         birthdayFormatFromRenapo,
@@ -52,9 +52,7 @@ export class GovernmentScrapper extends Provider {
     };
   }
 
-  // @ts-ignore
-  // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
-  async provide(curpId: Curp) {
+  async provide(curpId: Curp): Promise<Mexican | { error: string } | null> {
     // eslint-disable-next-line @typescript-eslint/no-unsafe-call,@typescript-eslint/no-unsafe-member-access
     const captchaSolution = await this.captchaSolver.solve(
       '6LdJssgUAAAAAKkVr-Aj-xP5QQzclPeGZmhRwXeY',
