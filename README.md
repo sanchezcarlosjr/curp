@@ -28,9 +28,9 @@ Provider <|-down- Arsus
 
 ## Getting started
 ```typescript
-import { GovernmentScrapper, CaptchaSolver, Arsus } from "providers";
-import { Mexican } from "models";
-import { CaptchaSolver } from "shared";
+import { GovernmentScrapper, CaptchaSolver, Arsus } from "get-mexican-data-by-curp";
+import { Mexican } from "get-mexican-data-by-curp";
+import { CaptchaSolver } from "get-mexican-data-by-curp";
 
 const mexicanFinder = new MexicanFinder(
   // Your own database.
@@ -51,10 +51,10 @@ if (mexicanFinder.finalState() !== 'Firestore') {
 ## Firestore example
 ```typescript
 import { getFirestore } from 'firebase-admin/lib/firestore';
-import { Curp } from 'get-mexican-data-by-curp/models';
-import { Provider } from 'get-mexican-data-by-curp/models';
-import { GovernmentScrapperCache } from 'get-mexican-data-by-curp/GovernmentScrapperCache';
-import { Mexican } from 'get-mexican-data-by-curp/models';
+import { Curp } from 'get-mexican-data-by-curp';
+import { Provider } from 'get-mexican-data-by-curp';
+import { GovernmentScrapperCache } from 'get-mexican-data-by-curp';
+import { Mexican } from 'get-mexican-data-by-curp';
 
 export class Firestore extends Provider implements GovernmentScrapperCache {
   constructor(
