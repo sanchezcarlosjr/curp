@@ -1,6 +1,6 @@
 {
   "name": "get-mexican-data-by-curp",
-  "version": "0.7.3-beta",
+  "version": "0.7.4-beta",
   "description": "Verify CURP and obtain personal information from the Mexican government CURP. It scrapes official site and another providers.",
   "main": "./lib/src/index.js",
   "files": [

@@ -18,7 +18,7 @@ export class GovernmentScrapper extends Provider {
   private static async parseResponse(
     renapoResponse: { registros: any[] },
     curp: Curp
-  ) {
+  ): Promise<Mexican> {
     const register = renapoResponse.registros[0];
     return {
       curp: curp.value,
@@ -98,7 +98,6 @@ export class GovernmentScrapper extends Provider {
         error: 'CURP not found',
       };
     }
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
     return GovernmentScrapper.parseResponse(renapoResponse, curpId);
   }
 
