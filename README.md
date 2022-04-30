@@ -35,7 +35,7 @@ import { CaptchaSolver } from "get-mexican-data-by-curp";
 const mexicanFinder = new MexicanFinder(
   // Your own database.
   new Firestore(),
-  // Other providers: Arsus, Conectame2, ...
+  // Other providers: Arsus, Conectame, ...
   new Arsus("apiKey"),
   // 2Captcha ApiKey https://2captcha.com/enterpage
   new GovernmentScrapper(new CaptchaSolver("apiKey"))
