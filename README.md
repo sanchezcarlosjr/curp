@@ -7,8 +7,12 @@ Inspired by [node-module-boilerplate](https://github.com/sindresorhus/node-modul
 ```
 npm i get-mexican-data-by-curp
 ```
+# Express demo template
+[Express demo template](https://github.com/sanchezcarlosjr/curp-server-ts)
 
 # How to Start Using CURP package?
+![PUML](https://www.plantuml.com/plantuml/png/RT112i8m40NGVKunTAL22cv5f2BKbI1uWf2E6cWdOJAjWdft2wc5OdS_VFuBJ175iBHDhMnjOeH3xP1aU9pmwQoXqb6532y50DS-BspBORdvrUgZqWgqtaqtWtDctxb4X1J_YUbVcjtjBZsNhVDybOs26gdjMrV-GHfAnnZ5CyvqHzyXKuCa5yicX5bWpx6Dga2g-ZDy0G00)
+
 ```puml
 @startuml
 class Client
